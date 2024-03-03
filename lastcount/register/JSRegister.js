@@ -101,22 +101,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 // Save user data to local storage
-document.getElementById('mainFrom').addEventListener('submit', function(e) {
+document.getElementById("mainForm").addEventListener('submit', function(e) {
     e.preventDefault();
     var username = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    var userData = {name: Name, email: email, password: password};
+    var userData = { name: username, email: email, password: password };
+    userData.name = username;
+    userData.email = email;
+    userData.password = password;
     localStorage.setItem('userData', JSON.stringify(userData));
     document.getElementById('message').innerHTML = 'Registration successful!';
-  });
+});
+
   
-  // Load user data from local storage
-  document.getElementById('loadButton').addEventListener('click', function() {
-    var userData = JSON.parse(localStorage.getItem('userData'));
-    if (userData) {
-      document.getElementById('message').innerHTML = 'Name: ' + userData.username + '<br>Email: ' + userData.email;
-    } else {
-      document.getElementById('message').innerHTML = 'No data found.';
-    }
-  });
+
+
