@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (checkInputs()) {
             showModal();
         }
-    });
+    }); 
 
     name.addEventListener('input', () => {
         validateField(name, name.value.trim() !== '', 'Name cannot be blank');
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 // Save user data to local storage
-document.getElementById("mainForm").addEventListener('submit', function(e) {
+document.getElementById("mainForm").addEventListener('submit', function (e) {
     e.preventDefault();
     var username = document.getElementById('name').value;
     var email = document.getElementById('email').value;
@@ -112,8 +112,9 @@ document.getElementById("mainForm").addEventListener('submit', function(e) {
     userData.password = password;
     localStorage.setItem('userData', JSON.stringify(userData));
     document.getElementById('message').innerHTML = 'Registration successful!';
+    window.location.replace('./search/searchhtml.html');
 });
 
-  
+
 
 
