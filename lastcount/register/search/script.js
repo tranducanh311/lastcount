@@ -5,7 +5,7 @@ const modalContainer = document.querySelector('.modal-container');
 const mealDetailsContent = document.querySelector('.meal-details-content');
 const recipeCloseBtn = document.getElementById('recipeCloseBtn');
 
-// Event listeners
+
 searchButton.addEventListener('click', async () => {
     const ingredient = searchInput.value.trim();
     if (ingredient) {
@@ -25,19 +25,19 @@ mealList.addEventListener('click', async (e) => {
     }
 });
 
-// Function to fetch meals by ingredient
+// Chức năng xem cách làm theo thành phần
 async function searchMealsByIngredient(ingredient) {
     try {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
         const data = await response.json();
         return data.meals;
     } catch (error) {
-        // Show error in console
+       // Hiển thị lỗi in console
         console.error('Error fetching data:', error);
     }
 }
 
-// Function to fetch meal details by ID
+// Chức năng lấy chi tiết bữa ăn theo ID
 async function getMealDetails(mealId) {
     try {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
@@ -48,7 +48,7 @@ async function getMealDetails(mealId) {
     }
 }
 
-// Function to display meals in the list
+// Chức năng hiển thị bữa ăn trong danh sách
 function displayMeals(meals) {
     mealList.innerHTML = '';
     if (meals) {
@@ -67,7 +67,7 @@ function displayMeals(meals) {
     }
 }
 
-// Function to create and display meal details on popup
+// Chức năng tạo và hiển thị chi tiết bữa ăn trên cửa sổ 
 function showMealDetailsPopup(meal) {
     mealDetailsContent.innerHTML = `
         <h2 class="recipe-title">${meal.strMeal}</h2>
@@ -86,7 +86,7 @@ function showMealDetailsPopup(meal) {
     modalContainer.style.display = 'block';
 }
 
-// Event listener for popup close button
+// Trình xử lý sự kiện cho nút đóng cửa sổ bật lên
 recipeCloseBtn.addEventListener('click', closeRecipeModal);
 
 function closeRecipeModal() {
@@ -107,7 +107,7 @@ async function performSearch() {
     }
 }
 
-// Perform a chicken search on page load
+// Thực hiện tìm kiếm gà khi tải trang
 window.addEventListener('load', () => {
     searchInput.value = 'chicken';
     performSearch();
